@@ -1,0 +1,23 @@
+name: ADASH (ABAP unit tests)
+on:
+  push:
+    branches-ignore:
+      - 'main'
+jobs:
+  adash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          ref: ${{ github.sha }}
+          filters: |
+            src:
+              - 'src/**'
+      - name: Install ADASH
+        if: ${{ steps.changes.outputs.src == 'true' }}
+        run: npm install adash-cli -g
+      - name: Run ADASH (ABAP unit tests)
+        if: ${{ steps.changes.outputs.src == 'true' }}
+        run: adash testp ZITALYVAT_AC24 -u ABAPCONF2024 -p ${{ secrets.A4H_PASSWORD }} -h https://sap-abapconf2024.simone-gaffurini-regestaitalia-it.nuve.run -c 001 -i

@@ -1,0 +1,29 @@
+name: TRM Publish
+on:
+  release:
+    types: [published]
+jobs:
+  trmPublish:
+    name: TRM Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: TRM Publish
+        uses: RegestaItalia/trm-action-publish@3.0.2
+        with:
+          systemRESTEndpoint: 'https://sap-abapconf2024.simone-gaffurini-regestaitalia-it.nuve.run/'
+          systemLoginUser: 'ABAPCONF2024'
+          systemLoginPassword: ${{ secrets.A4H_PASSWORD }}
+          systemLoginLanguage: 'EN'
+          name: 'abapconf2024'
+          registryToken: ${{ secrets.TRM_TOKEN }}
+          private: false
+          abapPackage: 'ZITALYVAT_AC24'
+          shortDescription: 'Italy VAT: AbapConf 2024 Demo package'
+          releaseTransportTarget: 'TRM'
+  deploy:
+    name: Run deploy workflow
+    needs: [trmPublish]
+    uses: ./.github/workflows/trmInstall.yml
+    with:
+      version: ${{ github.event.release.tag_name }}
+    secrets: inherit

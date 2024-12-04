@@ -1,0 +1,29 @@
+name: TRM Install
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+jobs:
+  trmInstall:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout R3trans
+        uses: actions/checkout@v2
+        with:
+          repository: RegestaItalia/regesta.r3trans
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          path: r3trans
+      - name: TRM Install
+        uses: RegestaItalia/trm-action-install@3.0.2
+        with:
+          r3transDirPath: ./r3trans/Win_x64/6-26_753
+          systemRESTEndpoint: ${{ secrets.RST_PUBLIC_ENDPOINT }}
+          systemLoginUser: 'ABAPCONF2024'
+          systemLoginPassword: ${{ secrets.RST_PASSWORD }}
+          systemLoginLanguage: 'EN'
+          name: 'abapconf2024'
+          registryToken: ${{ secrets.TRM_TOKEN }}
+          installTransportTargetSystem: 'RGD'
+          transportLayer: 'ZRGD'
