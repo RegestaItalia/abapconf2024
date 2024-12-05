@@ -28,7 +28,7 @@ CLASS zcl_italy_vat_verify_abapconf IMPLEMENTATION.
       output-valid = cl_abap_matcher=>create( pattern = '^IT\d{11}$'
                                               text    = vat_number )->match( ).
       IF output-valid EQ 'X'.
-        output-message = 'VAT number is valid.'.
+        output-message = 'Congrats, VAT number is valid.'.
       ELSE.
         output-message = 'VAT number is NOT valid!'.
       ENDIF.
