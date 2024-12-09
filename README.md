@@ -79,4 +79,12 @@ You can watch the live demo from the AbapConf 2024 Channel 2 livestream by click
 
 ## 📑 Presentation  
 
-You can find the conference presentation [here](presentation.pdf).  
+You can find the conference presentation [here](presentation.pdf).
+
+## 🔗 Links
+
+- TRM package: [https://trmregistry.com/#/package/abapconf2024](https://trmregistry.com/#/package/abapconf2024)
+
+Can be installed with TRM
+
+`trm install abapconf2024 1.0.0`
