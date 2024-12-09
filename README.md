@@ -69,9 +69,13 @@ The unit tests in this package consist in testing the validity of that regex.
 
 Notice how no software/utility has to exist on RGD (**customer quality** system): the transport from development (RST) to quality (RGD) is **always done manually**.
 
-## 🎥 Video Demo  
+## 🎥 Video Demo 
 
-This section will be updated with links to the demo recording after **AbapConf2024** concludes.  
+You can watch the live demo from the AbapConf 2024 Channel 2 livestream by clicking on this video thumbnail.
+
+<p align="center">  
+    <a href="https://www.youtube.com/live/5saGqydX6VE?si=uZ0P9Kgrg9H-2sAH&t=7579"><img src="./images/video_thumbnail.png" alt="AbapConf2024 Live Demo" /></a>  
+</p>
 
 ## 📑 Presentation  
 
